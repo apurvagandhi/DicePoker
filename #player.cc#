@@ -1,0 +1,218 @@
+/******************************************************************
+ * player.cc
+ * Name: Apurva Gandhi
+ * Email:ahgand22@g.holycross.edu 
+ * Date: 02/03/2019
+ * Class:CSCI132 - 01
+ * Assignment: Homework 1
+ * Purpose: Implements the player.h functions which 
+ * performs functions such as throwing dice, clearning
+ * rank/points, getting/showing/computing rank as well as
+ * modiying the points for the game "DicePoker" 
+ * Input: None
+ * Output: sets various variables to appropriate values 
+ * according to its functionality
+ *****************************************************************/
+#include "player.h"
+
+/*****************************************************************
+ *Player::Player(void )
+ * Purpose:To initialize all the data members
+ * Input:NONE  
+ * Output:None
+ * Precondition:none
+ * postcondition:Initialize all data members to zero (including array elements); 
+ * ****************************************************************/
+Player::Player(void )
+{
+    diceArray[numDice] = {0};
+    rank = 0;
+    points = 0;
+} //end of Player
+
+/*****************************************************************
+ *void Player::clearRank(void)
+ * Purpose: To set the player rank
+ * Input:None  
+ * Output: None
+ * Precondition:None
+ * postcondition: Set rank of player to zero.
+ * ****************************************************************/
+void Player::clearRank(void)
+{
+    rank = 0;
+} //end of clearRank
+
+/*****************************************************************
+ *void Player::clearPoints(void)
+ * Purpose:To clear the points
+ * Input:None
+ * Output:None
+ * Precondition:None
+ * postcondition: Set number of points of current player to zero.
+ * ****************************************************************/
+void Player::clearPoints(void)
+{
+    points = 0;
+}//end of clearPoints
+
+/*****************************************************************
+ *void Player::throwDice(void)
+ * Purpose: To roll a die and print its value and rank based on that value 
+ * Input:None
+ * Output:None
+ * Precondition: None
+ * postcondition:Generates a random number between 1 and 6 for each of the elements in diceArray. 
+ * Prints out the value of each die after the roll. 
+ * Also computes and sets the rank of the throw 
+ * ****************************************************************/
+void Player::throwDice(void)
+{
+    for(int i = 0; i < numDice; i++)
+    {
+        int randomNum = Randomize(6);
+        diceArray[i] = randomNum;
+        cout << "Die # " << i+1 << " is a " << randomNum << endl; 
+    }
+    computeRank();
+}//end of throwDice
+
+/*****************************************************************
+ *void Player::showRank(void)
+ * Purpose: To prints the rank of the player to the screen 
+ * Input:None  
+ * Output:None
+ * Precondition:Rank must have been intialized
+ * postcondition: Prints out the rank and the meaning
+ * ****************************************************************/
+void Player::showRank(void)
+{
+    if (rank == 0)
+    {
+        cout << "Nothing, 0 points." << endl;
+    }
+    else if (rank == 1)
+    {
+        cout << "One Pairs, 1 points." << endl;
+    }
+    else if (rank == 2)
+    {
+        cout << "Two Pairs, 2 points." << endl;
+    }
+    else if (rank == 3)
+    {
+        cout << "Three of a Kind, 3 points." << endl; 
+    }
+    else if (rank == 4)
+    {
+        cout << "Full House, 4 points." << endl;
+    }
+    else if (rank == 5)
+    {
+        cout << "Four of a Kind, 5 points." << endl;
+    }
+    else if (rank == 6)
+    {
+        cout << "Five of a Kind, 6 points." << endl;
+    }
+}//end of showRank
+
+/*****************************************************************
+ *int Player::getRank(void)
+ * Purpose: Tog get the current rank 
+ * Input:None  
+ * Output: Integer value of cuurent Rank
+ * Precondition:Rank must have been intialized
+ * postcondition: Returns the rank of the current diceArray.
+ * ****************************************************************/
+int Player::getRank(void)
+{
+    return rank;
+}//end of getRank
+
+/*****************************************************************
+ *int Player::getPoints( void )
+ * Purpose:To get the current points 
+ * Input:None  
+ * Output:Integer value of points 
+ * Precondition:points must have been intialized
+ * postcondition:Returns the number of points for the current player.
+ * ****************************************************************/
+int Player::getPoints( void )
+{
+    return points;
+} //end of getPoints
+
+/*****************************************************************
+ *void Player::addPoint(void)
+ * Purpose:To add 1 point to total points 
+ * Input: None 
+ * Output: None
+ * Precondition:None
+ * postcondition:Adds one point to number of points for the current player.
+ * ****************************************************************/
+void Player::addPoint(void)
+{
+    points++;
+}//end of addPoint
+
+/*****************************************************************
+ *void Player::computeRank(void)
+ * Purpose: To calulate and compute the rank based on the dice pairs 
+ * Input:None
+ * Output: None
+ * Precondition:ThrowDice() must have been called before
+ * postcondition: Computes and sets the rank of the diceArray.
+ * ****************************************************************/
+void Player::computeRank(void)
+{
+    int pairs = 0;
+    // finding the index with same value but different index. 
+    for (int i = 0; i < numDice; i++)
+    {
+        for (int j = i+1; j < numDice; j++) 
+        {
+            if (diceArray[i] == diceArray[j])
+            {
+                pairs++;
+            }
+        }
+    }
+    if (pairs == 0)
+    {
+        rank = 0;
+    }
+    if (pairs == 1)
+    {
+        rank = 1;
+    }
+    if (pairs == 2)
+    {  
+        rank = 2;
+    }
+    if (pairs == 3)
+    {
+        rank = 3;
+    }
+    if (pairs == 4)
+    {
+        rank = 4;
+    }
+    if (pairs == 6)
+    {
+        rank = 5;
+    }
+    if (pairs == 10) 
+    {
+        rank = 6;
+    }
+}//end of computeRank
+
+/**********Randomize*****************************
+ *Get a random number between 1 and range        *
+ *************************************************/
+int Randomize(int range)
+{
+    return (int)(((double)rand()/((double)RAND_MAX + 1.0)) * (double)range) + 1;
+} //Randomize
+

@@ -1,0 +1,71 @@
+ahgand22@mathcs228:~/assignments/assign1$ ./playDice
+Would you like to play a game (y/n)?
+y
+How many rounds (less than 10) would you like to play?
+3
+
+Round #1:
+Player 1 throws: 
+Die # 1 is a 6
+Die # 2 is a 3
+Die # 3 is a 5
+Die # 4 is a 5
+Die # 5 is a 6
+Two Pairs , 2 points.
+
+Player 2 throws: 
+Die # 1 is a 2
+Die # 2 is a 3
+Die # 3 is a 5
+Die # 4 is a 2
+Die # 5 is a 4
+One Pairs , 1 points.
+
+Player 1 wins this round!
+
+
+Round #2:
+Player 1 throws: 
+Die # 1 is a 3
+Die # 2 is a 4
+Die # 3 is a 3
+Die # 4 is a 4
+Die # 5 is a 6
+Two Pairs , 2 points.
+
+Player 2 throws: 
+Die # 1 is a 6
+Die # 2 is a 4
+Die # 3 is a 5
+Die # 4 is a 1
+Die # 5 is a 4
+One Pairs , 1 points.
+
+Player 1 wins this round!
+
+
+Round #3:
+Player 1 throws: 
+Die # 1 is a 1
+Die # 2 is a 2
+Die # 3 is a 1
+Die # 4 is a 5
+Die # 5 is a 1
+Three of a Kind , 3 points.
+
+Player 2 throws: 
+Die # 1 is a 3
+Die # 2 is a 1
+Die # 3 is a 1
+Die # 4 is a 6
+Die # 5 is a 2
+One Pairs , 1 points.
+
+Player 1 wins this round!
+
+Player 1 wins the game!
+Would you like to play again (y/n)?
+n
+Thank you for playing Dice Poker!
+ahgand22@mathcs228:~/assignments/assign1$ 
+
